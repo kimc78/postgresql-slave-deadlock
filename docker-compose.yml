@@ -1,0 +1,48 @@
+version: '3'
+services:
+  postgres-master:
+    build: postgres-master
+    ports:
+        - 5532:5432
+        
+  postgres-slave:
+    build: postgres-slave
+    ports:
+        - 5632:5432
+    depends_on:
+        - postgres-master
+
+  worker-master:
+    build: worker-master
+    depends_on:
+        - postgres-master
+
+  worker-slave-1:
+    build: worker-slave
+    depends_on:
+        - postgres-slave
+        - worker-master
+
+  worker-slave-2:
+    build: worker-slave
+    depends_on:
+        - postgres-slave
+        - worker-master
+
+  worker-slave-3:
+    build: worker-slave
+    depends_on:
+        - postgres-slave
+        - worker-master
+
+  worker-slave-4:
+    build: worker-slave
+    depends_on:
+        - postgres-slave
+        - worker-master
+
+  worker-slave-5:
+    build: worker-slave
+    depends_on:
+        - postgres-slave
+        - worker-master
