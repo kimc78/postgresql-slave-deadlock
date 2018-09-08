@@ -74,4 +74,4 @@ worker-master_1    | COMMIT
 ... previous message repeats forever ...
 ```
 
-The postgres_slave will now halt queries to wait for recovery and recovery will wait for the completion of query. This lock will never be released and you need to abort all queries on the slave to recover.
+All queries to the slave will wait for recovery to finish and recovery is waiting for all queries to finish.
