@@ -110,3 +110,28 @@ postgres=# select * from pg_stat_activity;
        |          |  27 |          |          |                  |             |                 |             | 2018-09-09 07:22:29.272649+00 |                               |                               |                               | Activity        | CheckpointerMain |        |             |              |                                 | checkpointer
        |          |  32 |          |          |                  |             |                 |             | 2018-09-09 07:22:29.28893+00  |                               |                               |                               | Activity        | WalReceiverMain  |        |             |              |                                 | walreceiver
 ```
+
+```
+postgres=# select * from pg_locks;
+  locktype  | database | relation | page | tuple | virtualxid | transactionid | classid | objid | objsubid | virtualtransaction | pid |        mode         | granted | fastpath 
+------------+----------+----------+------+-------+------------+---------------+---------+-------+----------+--------------------+-----+---------------------+---------+----------
+ relation   |    13017 |    11577 |      |       |            |               |         |       |          | 7/3                |  99 | AccessShareLock     | t       | t
+ virtualxid |          |          |      |       | 7/3        |               |         |       |          | 7/3                |  99 | ExclusiveLock       | t       | t
+ virtualxid |          |          |      |       | 6/2        |               |         |       |          | 6/2                |  97 | ExclusiveLock       | t       | t
+ virtualxid |          |          |      |       | 5/2        |               |         |       |          | 5/2                |  96 | ExclusiveLock       | t       | t
+ virtualxid |          |          |      |       | 4/2        |               |         |       |          | 4/2                |  95 | ExclusiveLock       | t       | t
+ virtualxid |          |          |      |       | 3/12       |               |         |       |          | 3/12               |  94 | ExclusiveLock       | t       | t
+ relation   |    13017 |    16388 |      |       |            |               |         |       |          | 2/114              |  98 | AccessShareLock     | t       | t
+ virtualxid |          |          |      |       | 2/114      |               |         |       |          | 2/114              |  98 | ExclusiveLock       | t       | t
+ virtualxid |          |          |      |       | 1/1        |               |         |       |          | 1/0                |  16 | ExclusiveLock       | t       | t
+ relation   |    13017 |    16384 |      |       |            |               |         |       |          | 3/12               |  94 | AccessShareLock     | f       | f
+ relation   |    13017 |    16388 |      |       |            |               |         |       |          | 6/2                |  97 | AccessShareLock     | t       | f
+ relation   |    13017 |    16384 |      |       |            |               |         |       |          | 5/2                |  96 | AccessShareLock     | f       | f
+ relation   |    13017 |    16388 |      |       |            |               |         |       |          | 3/12               |  94 | AccessShareLock     | t       | f
+ relation   |    13017 |    16384 |      |       |            |               |         |       |          | 6/2                |  97 | AccessShareLock     | f       | f
+ relation   |    13017 |    16388 |      |       |            |               |         |       |          | 5/2                |  96 | AccessShareLock     | t       | f
+ relation   |    13017 |    16384 |      |       |            |               |         |       |          | 4/2                |  95 | AccessShareLock     | f       | f
+ relation   |    13017 |    16384 |      |       |            |               |         |       |          | 1/0                |  16 | AccessExclusiveLock | t       | f
+ relation   |    13017 |    16384 |      |       |            |               |         |       |          | 2/114              |  98 | AccessShareLock     | f       | f
+ relation   |    13017 |    16388 |      |       |            |               |         |       |          | 4/2                |  95 | AccessShareLock     | t       | f
+```
