@@ -4,7 +4,7 @@
 
 wait for all docker containers to build and launch
 
-You will get alot of about like this
+You will get about like this
 ```
 postgres-master_1  | 2018-09-08 11:01:29.428 GMT [9] LOG:  listening on IPv4 address "0.0.0.0", port 5432
 postgres-master_1  | 2018-09-08 11:01:29.428 GMT [9] LOG:  listening on IPv6 address "::", port 5432
