@@ -74,4 +74,4 @@ worker-master_1    | COMMIT
 ... previous message repeats forever ...
 ```
 
-All queries to the slave will wait for recovery to finish and recovery is waiting for all queries to finish.
+All queries to the slave will wait for recovery to finish and recovery is waiting for all queries to finish. This deadlock is not detected and will last forever.
